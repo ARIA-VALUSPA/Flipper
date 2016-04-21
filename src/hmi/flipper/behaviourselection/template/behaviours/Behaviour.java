@@ -110,12 +110,15 @@ public class Behaviour
      */
     
     public void execute( Record is ) throws TemplateRunException
-    {
+    {System.out.println(argValues.size());
         ArrayList<String> values = new ArrayList<String>();
         for( AbstractValue av : argValues) {
+            
             Value v = av.getValue(is);
             values.add(v.toString());
+            
         }
+        
         behaviour.execute(new ArrayList<String>(argNames), new ArrayList<String>(values));
     }
 

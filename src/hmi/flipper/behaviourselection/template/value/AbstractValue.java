@@ -100,6 +100,7 @@ public class AbstractValue
             }
         } else {
             //this.valueString = valueString.replaceAll(" ", "");
+            
             this.valueString = valueString;
             if( !valueString.contains("$") ) {
                 value = getStaticValue( valueString );
@@ -114,6 +115,7 @@ public class AbstractValue
      * @param str - the String-representation of the Value
      * @return the Value
      */
+    //TODO: Fix this, doesnt always classify as string properly
     public Value getStaticValue( String str )
     {
         if( str.length() == 0 ) return new Value("");
@@ -130,7 +132,7 @@ public class AbstractValue
         for( int i=0; i<str.length(); i++ ) {
             Character c = str.charAt(i);
             if( i == 0 ) {
-                if( !Character.isLetter(c) && c != '!' && c != '?' && c != '#' ) {
+                if( !Character.isLetter(c) && c != '!' && c != '?' && c != '#' && c != '\'' ) {
                     isString = false;
                 }
                 if( !Character.isDigit(c) && c != '-' ) {
@@ -149,7 +151,7 @@ public class AbstractValue
                 if( !Character.isDigit(c) && c != '.' ) {
                     isDouble = false;
                 }
-                if( !Character.isDigit(c) && !Character.isLetter(c) && c != '_' && c != ' ' && c != '.' && c != ',' && c != '!' && c != '?' ) {
+                if( !Character.isDigit(c) && !Character.isLetter(c) && c != '\'' && c != '_' && c != ' ' && c != '.' && c != ',' && c != '!' && c != '?' ) {
                     isString = false;
                 }
             }
@@ -163,7 +165,8 @@ public class AbstractValue
         } else if( isString && !isInt && !isDouble ) {
             return new Value(str);
         }
-        return null;
+        System.err.println("Could not parse \"" + str + "\" to string, double or integer!");
+        return new Value(str);
     }
 
     /**
@@ -218,7 +221,7 @@ public class AbstractValue
             if( value != null ) {
                 return value;
             } else {
-                return getDynamicValue(valueString,is);
+                return getDynamicValue(valueString, is);
             }
         } else if( numberOfComponents == 2 ) {
             /* If there are 2 components, calculate the Value of both components, and combine them */

@@ -446,44 +446,47 @@ public class Template
                     throw new TemplateParseException("Template '"+template.getId()+"' has more than 1 <c_effects> element.");
                 }
                 Element ceffectsBlock = (Element)ceffectsBlockList.item(0) ;
-
+                
                 /* Parse Updates */
-                NodeList cupdateList = ceffectsBlock.getElementsByTagName(E_CUPDATE);
-                for( int k=0; k<cupdateList.getLength(); k++ ) {
-                    Element cupdateElement = (Element)cupdateList.item(k);
-                    try {
-                        choice.addEffect(Update.parseUpdate(cupdateElement));
-                    } catch(TemplateParseException e) {
-                        e.templateName = templateId;
-                        throw e;
+                if(ceffectsBlock != null){
+                    NodeList cupdateList = ceffectsBlock.getElementsByTagName(E_CUPDATE);
+                    for( int k=0; k<cupdateList.getLength(); k++ ) {
+                        Element cupdateElement = (Element)cupdateList.item(k);
+                        try {
+                            choice.addEffect(Update.parseUpdate(cupdateElement));
+                        } catch(TemplateParseException e) {
+                            e.templateName = templateId;
+                            throw e;
+                        }
+                        // --> template.addEffect(Update.parseUpdate(cupdateElement));
                     }
-                    // --> template.addEffect(Update.parseUpdate(cupdateElement));
-                }
+                
 
-                /* Parse Removals */
-                NodeList cremoveList = ceffectsBlock.getElementsByTagName(E_CREMOVE);
-                for( int k=0; k<cremoveList.getLength(); k++ ) {
-                    Element curemoveElement = (Element)cremoveList.item(k);
-                    try {
-                        choice.addEffect(Update.parseUpdate(curemoveElement));
-                    } catch(TemplateParseException e) {
-                        e.templateName = templateId;
-                        throw e;
+                    /* Parse Removals */
+                    NodeList cremoveList = ceffectsBlock.getElementsByTagName(E_CREMOVE);
+                    for( int k=0; k<cremoveList.getLength(); k++ ) {
+                        Element curemoveElement = (Element)cremoveList.item(k);
+                        try {
+                            choice.addEffect(Update.parseUpdate(curemoveElement));
+                        } catch(TemplateParseException e) {
+                            e.templateName = templateId;
+                            throw e;
+                        }
+                        // --> template.addEffect(Update.parseUpdate(cupdateElement));
                     }
-                    // --> template.addEffect(Update.parseUpdate(cupdateElement));
-                }
 
-                /* Parse Functions */
-                NodeList cfunctionList = ceffectsBlock.getElementsByTagName(E_CFUNCTION);
-                for( int k=0; k<cfunctionList.getLength(); k++ ) {
-                    Element cfunctionElement = (Element)cfunctionList.item(k);
-                    try {
-                        choice.addEffect(Function.parseFunction(cfunctionElement,true));
-                    } catch(TemplateParseException e) {
-                        e.templateName = templateId;
-                        throw e;
+                    /* Parse Functions */
+                    NodeList cfunctionList = ceffectsBlock.getElementsByTagName(E_CFUNCTION);
+                    for( int k=0; k<cfunctionList.getLength(); k++ ) {
+                        Element cfunctionElement = (Element)cfunctionList.item(k);
+                        try {
+                            choice.addEffect(Function.parseFunction(cfunctionElement,true));
+                        } catch(TemplateParseException e) {
+                            e.templateName = templateId;
+                            throw e;
+                        }
+                        // --> template.addFunction(Function.parseFunction(functionElement));
                     }
-                    // --> template.addFunction(Function.parseFunction(functionElement));
                 }
 
                 /* +++++ Behaviours +++++ */
