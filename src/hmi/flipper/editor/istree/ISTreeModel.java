@@ -186,7 +186,7 @@ public class ISTreeModel implements TreeModel {
     @Override
     public void valueForPathChanged(TreePath path, Object newValue)
     {
-        System.out.println("Method 'valueForPathChanged(). Not implemented yet.'");
+        System.err.println("Method 'valueForPathChanged(). Not implemented yet.'");
     }
     
     public Collection<ISTreeItem> getItems()

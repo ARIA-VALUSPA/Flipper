@@ -37,26 +37,29 @@ public class AddValueDialog extends JPanel {
     private JButton okButton = null;
     private JButton cancelButton = null;
     
-    private ISTreePanel treePanel;
-    private TreePath path;
-    private JFrame parentFrame;
+    private final ISTreePanel treePanel;
+    private final TreePath path;
+    private final JFrame parentFrame;
     private JLabel typeLabel = null;
     private JComboBox typeComboBox = null;
     
     /**
      * This is the default constructor
+     * @param parentFrame
+     * @param treePanel
+     * @param path
      */
     public AddValueDialog( JFrame parentFrame, ISTreePanel treePanel, TreePath path ) {
         super();
-        setPreferredSize(new Dimension(250,100));
         this.treePanel = treePanel;
         this.path = path;
         this.parentFrame = parentFrame; 
         initialize();
+        setPreferredSize(new Dimension(250,100));
     }
 
     /**
-     * This method initializes this
+     * This method initialises this
      * 
      * @return void
      */
@@ -130,6 +133,7 @@ public class AddValueDialog extends JPanel {
         if (nameField == null) {
             nameField = new JTextField();
             nameField.addActionListener(new java.awt.event.ActionListener() {
+                @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     treePanel.addISValue(path, typeComboBox.getSelectedItem().toString(), nameField.getText(), valueField.getText());
                     parentFrame.dispose();
@@ -148,6 +152,7 @@ public class AddValueDialog extends JPanel {
         if (valueField == null) {
             valueField = new JTextField();
             valueField.addActionListener(new java.awt.event.ActionListener() {
+                @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     treePanel.addISValue(path, typeComboBox.getSelectedItem().toString(), nameField.getText(), valueField.getText());
                     parentFrame.dispose();
@@ -207,6 +212,7 @@ public class AddValueDialog extends JPanel {
             okButton = new JButton();
             okButton.setText("Ok");
             okButton.addActionListener(new java.awt.event.ActionListener() {
+                @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     treePanel.addISValue(path, typeComboBox.getSelectedItem().toString(), nameField.getText(), valueField.getText());
                     parentFrame.dispose();
@@ -226,6 +232,7 @@ public class AddValueDialog extends JPanel {
             cancelButton = new JButton();
             cancelButton.setText("Cancel");
             cancelButton.addActionListener(new java.awt.event.ActionListener() {
+                @Override
                 public void actionPerformed(java.awt.event.ActionEvent e) {
                     parentFrame.dispose();
                 }
@@ -242,8 +249,9 @@ public class AddValueDialog extends JPanel {
     private JComboBox getTypeComboBox() {
         String[] types = { "String", "Integer", "Double", "Record", "List" };
         if (typeComboBox == null) {
-            typeComboBox = new JComboBox(types);
+            typeComboBox = new JComboBox<>(types);
             typeComboBox.addItemListener(new java.awt.event.ItemListener() {
+                @Override
                 public void itemStateChanged(java.awt.event.ItemEvent e) {
                     if( e.getItem().toString().equals("Record") ) {
                         nameField.setEnabled(true);

@@ -253,7 +253,7 @@ public class RunnerPanel extends JPanel
             return;
         }
         if( templates == null ) {
-            System.out.println("No Templates found.");
+            System.err.println("No Templates found.");
             return;
         }
         showTemplates(templates);
@@ -295,7 +295,7 @@ public class RunnerPanel extends JPanel
                     try {
                         effect.apply(is, null);
                     }catch( TemplateRunException e ) {
-                        System.out.println("Error while applying effect of Template  "
+                        System.err.println("Error while applying effect of Template  "
                                 +result.getTemplate().getId()+"("+result.getTemplate().getName()+")");
                         e.printStackTrace();
                     }
@@ -320,7 +320,7 @@ public class RunnerPanel extends JPanel
                         try {
                             effect.apply(is, null);
                         }catch( TemplateRunException e ) {
-                            System.out.println("Error while applying effect of Template  "
+                            System.err.println("Error while applying effect of Template  "
                                     +result.getTemplate().getId()+"("+result.getTemplate().getName()+")");
                             e.printStackTrace();
                         }

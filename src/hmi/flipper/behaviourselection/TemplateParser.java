@@ -134,7 +134,7 @@ public class TemplateParser
             Document doc = docBuilder.parse(inStream);
             return parseDocument( doc );
         }catch( SAXParseException e ) {
-            System.out.println("XSD Error in file '"+filename+"' (r. "+e.getLineNumber()+"): "+ e.getMessage());
+            System.err.println("XSD Error in file '"+filename+"' (r. "+e.getLineNumber()+"): "+ e.getMessage());
             errors.put(e.getMessage(),e.getLineNumber());
             return null;
 
@@ -165,7 +165,7 @@ public class TemplateParser
                 } else {
                     functionId = "";
                 }
-                System.out.println( "Template Parse Error in '"+filename+"'"+templateId+functionId+": " + e.getMessage() );
+                System.err.println( "Template Parse Error in '"+filename+"'"+templateId+functionId+": " + e.getMessage() );
                 errors.put("Error" + templateId + ": " + e.getMessage(), -1 );
                 succes = false;
             }
@@ -187,17 +187,17 @@ public class TemplateParser
         }
 
         public void error(SAXParseException exception) {
-            System.out.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
+            System.err.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
             parser.errors.put(exception.getMessage(),exception.getLineNumber());
         }
 
         public void fatalError(SAXParseException exception) {
-            System.out.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
+            System.err.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
             parser.errors.put(exception.getMessage(),exception.getLineNumber());
         }
 
         public void warning(SAXParseException exception) {
-            System.out.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
+            System.err.println("XSD Error in file '"+filename+"' (r. "+exception.getLineNumber()+"): "+ exception.getMessage());
             parser.errors.put(exception.getMessage(),exception.getLineNumber());
         }
     }

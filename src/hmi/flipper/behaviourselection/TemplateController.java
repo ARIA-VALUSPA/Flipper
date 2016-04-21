@@ -147,7 +147,7 @@ public class TemplateController
                     try {
                         effect.apply(is, this);
                     }catch( TemplateRunException e ) {
-                        System.out.println("Error while applying effect of Template  "
+                        System.err.println("Error while applying effect of Template  "
                                 +state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                         e.printStackTrace();
                         return false;
@@ -157,7 +157,7 @@ public class TemplateController
                 try {
                     state.getBehaviour().execute(is);
                 }catch( TemplateRunException e ) {
-                    System.out.println("Error while executing behaviour of Template  "
+                    System.err.println("Error while executing behaviour of Template  "
                             +state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                     e.printStackTrace();
                     return false;
@@ -176,7 +176,7 @@ public class TemplateController
                     try {
                         effect.apply(is, this);
                     }catch( TemplateRunException e ) {
-                        System.out.println("Error while applying effect of Template  "
+                        System.err.println("Error while applying effect of Template  "
                                 +state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                         e.printStackTrace();
                         return false;
@@ -186,7 +186,7 @@ public class TemplateController
                 try {
                     state.getBehaviour().execute(is);
                 }catch( TemplateRunException e ) {
-                    System.out.println("Error while executing behaviour of Template  "
+                    System.err.println("Error while executing behaviour of Template  "
                             +state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                     e.printStackTrace();
                     return false;
@@ -200,7 +200,7 @@ public class TemplateController
                 try {
                     state.getBehaviour().prepare(is);
                 }catch( TemplateRunException e ) {
-                    System.out.println("Error while preparing behaviour of Template  "
+                    System.err.println("Error while preparing behaviour of Template  "
                             +state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                     e.printStackTrace();
                     return false;
@@ -216,7 +216,7 @@ public class TemplateController
                 try {
                     effect.apply(is, this);
                 }catch( TemplateRunException e ) {
-                    System.out.println("Error while applying effect of Template  "+state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
+                    System.err.println("Error while applying effect of Template  "+state.getTemplate().getId()+"("+state.getTemplate().getName()+")");
                     e.printStackTrace();
                     return false;
                 }

@@ -165,7 +165,7 @@ public class AbstractValue
         } else if( isString && !isInt && !isDouble ) {
             return new Value(str);
         }
-        System.err.println("Could not parse \"" + str + "\" to string, double or integer!");
+        System.out.println("Could not parse \"" + str + "\" to string, double or integer!");
         return new Value(str);
     }
 

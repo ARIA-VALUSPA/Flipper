@@ -45,7 +45,6 @@ public class CompareNotExists extends Compare
         Value value;
         try {
             value = abstractValue1.getValue(is);
-            System.out.println("!!!! "+value);
         } catch( TemplateRunException e ) {
             e.printStackTrace();
             return true;
