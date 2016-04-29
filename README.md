@@ -18,7 +18,7 @@ https://sourceforge.net/projects/hmiflipper/
 
 On GitHub maintained by  
 Siewart van Wingerden  
-siewart@gmail.com  
+s.j.vanwingerden@student.utwente.nl 
 Human Media Interaction  
 University of Twente  
 
