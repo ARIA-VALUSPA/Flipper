@@ -45,6 +45,7 @@ public interface Record
     void set( String name, Double value );
     void set( String name, Record value );
     void set( String name, List value );
+    void set( String name, Item value );
     
     /** Returns the value of the variable with the given name, and of the given type.
      * @param name - the name of the wanted variable

@@ -22,6 +22,9 @@ import java.util.HashMap;
  * 
  * It is also possible to specify a path to a variable (for example if it is inside a record or a list, or even deeper).
  * 
+ * @version 0.5
+ * set() method for setting an item directly
+ * 
  * @version 0.1.3
  * getType() methods now accept Paths too.
  * 
@@ -50,7 +53,7 @@ public class DefaultRecord implements Serializable, Record
     {
 
     }
-
+   
     /**
      * Returns the Item at the place of the given path.
      * The path specifies the name of the variable you want. Substructures can be used by using a dot.
@@ -100,30 +103,43 @@ public class DefaultRecord implements Serializable, Record
             return null;
         }
     }
-
+    public void set(String name, Item item){
+        set(name, (Object) item);
+    }
+    
     public void set( String path, Object value )
     {
         /* Check if the path starts with a $ */
         if( path.charAt(0) == '$' ) {
             path = path.substring(1);
         }
-
+        
+        boolean isItem = value instanceof Item;
+        
         if( path.contains(".") ) {
             String p1 = path.substring(0, path.indexOf("."));
             String p2 = path.substring(path.indexOf(".")+1, path.length());
-            Item i = is.get(p1);
-            if( i == null ) {
-                if( p2.startsWith(DefaultList.FIRST) || p2.startsWith(DefaultList.LAST) 
-                        || p2.startsWith(DefaultList.ADDFIRST) || p2.startsWith(DefaultList.ADDLAST) ) {
-                    i = new DefaultItem(new DefaultList());
-                } else {
-                    i = new DefaultItem(new DefaultRecord());
+            if(!isItem){
+                Item i = is.get(p1);
+                if( i == null ) {
+                    if( p2.startsWith(DefaultList.FIRST) || p2.startsWith(DefaultList.LAST) 
+                            || p2.startsWith(DefaultList.ADDFIRST) || p2.startsWith(DefaultList.ADDLAST) ) {
+                        i = new DefaultItem(new DefaultList());
+                    } else {
+                        i = new DefaultItem(new DefaultRecord());
+                    }
                 }
+                i.set( p2, value );
+                is.put(p1,i);
+            }else{
+                is.put(p1, (Item) value);
             }
-            i.set( p2, value );
-            is.put(p1,i);
         } else {
-            is.put(path, new DefaultItem(value));
+            if(isItem){
+                is.put(path, (Item) value);
+            }else{
+                is.put(path, new DefaultItem(value));
+            }
         }
     }
 
@@ -323,9 +339,11 @@ public class DefaultRecord implements Serializable, Record
             } else if( i.getType() == Item.Type.Record ) {
                 System.out.println(pre + "-Record:" + key + " [");
                 ((DefaultRecord)i.getRecord()).print(pre + "  ");
+                System.out.println(pre + "        " + key + " ]");
             } else if( i.getType() == Item.Type.List ) {
                 System.out.println(pre + "-List:" + key + " [");
                 ((DefaultList)i.getList()).print(pre + "  ");
+                System.out.println(pre + "      " + key + " ]");
             }
         }
     }
