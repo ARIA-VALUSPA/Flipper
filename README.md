@@ -3,6 +3,8 @@
 This is Flipper, a simple, template-based library for specifying dialogue rules for dialogue systems.
 Using XML-templates, you can describe the preconditions, effects and behaviours of dialogue rules.
 
+A good starting place is the [wiki](https://github.com/ARIA-VALUSPA/Flipper/wiki).
+
 ###Integrating the library in your own project
 Flipper is meant to be integrated in your own project. While starting the jar-file will start a template editor, Flipper does nothing on its own.
 When integrating it into a project, the user needs to take care of the input (filling a datastructure called the 'Information State'), writing
