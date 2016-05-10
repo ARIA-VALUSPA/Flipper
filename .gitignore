@@ -13,3 +13,5 @@ hs_err_pid*
 /nbproject/private/
 /build/
 /dist/
+/FlipperSimpleExample/build/
+/FlipperSimpleExample/dist/
