@@ -44,7 +44,7 @@ import java.util.HashMap;
 public class DefaultRecord implements Serializable, Record
 {
     /* This record, programmed as a HashMap where the key is the name of the variable, and the value the Item-object of the value. */
-    private HashMap<String,Item> is = new HashMap<String,Item>();
+    protected HashMap<String,Item> is = new HashMap<String,Item>();
 
     /**
      * Creates a new InformationState
