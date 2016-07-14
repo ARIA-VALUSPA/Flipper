@@ -21,7 +21,7 @@ import org.xml.sax.SAXException;
 
 
 /**
- * The TemplateController, as the name suggests, controlls Templates.
+ * The TemplateController, as the name suggests, controls Templates.
  * It is given 1 or more TemplateFiles, uses this to create a list of Templates, and when asked (with a given InformationState),
  * it checks all Templates and selects a Template to execute.
  * 
