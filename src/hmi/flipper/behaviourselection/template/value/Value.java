@@ -24,7 +24,7 @@ public class Value
 
     /* The values of this Value, based on its type */
     private String stringValue = null;
-    private Long integerValue = null;
+    private Integer integerValue = null;
     private Double doubleValue = null;
     private Record recordValue = null;
     private List listValue = null;
@@ -47,12 +47,6 @@ public class Value
      * @param value
      */
     public Value( Integer value )
-    {
-        integerValue = value.longValue();
-        type = Type.Integer;
-    }
-    
-    public Value( Long value)
     {
         integerValue = value;
         type = Type.Integer;
@@ -100,7 +94,7 @@ public class Value
             type = Type.String;
         }
         if( item.getType() == Item.Type.Integer ) {
-            integerValue = item.getLong();
+            integerValue = item.getInteger();
             type = Type.Integer;
         }
         if( item.getType() == Item.Type.Double ) {
@@ -128,10 +122,6 @@ public class Value
      * @return the integerValue
      */
     public Integer getIntegerValue() {
-        return integerValue.intValue();
-    }
-    
-    public Long getLongValue(){
         return integerValue;
     }
 

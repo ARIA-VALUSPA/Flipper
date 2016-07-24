@@ -25,7 +25,7 @@ public class DefaultItem implements Serializable, Item
 {
     /* The possible values of this Item*/
     private String stringValue = null;
-    private Long integerValue = null;
+    private Integer integerValue = null;
     private Double doubleValue = null;
     private Record recordValue = null;
     private List listValue = null;
@@ -43,7 +43,7 @@ public class DefaultItem implements Serializable, Item
         if( o instanceof String ) {
             String str = (String)o;
             if( isInt(str) ) {
-                integerValue = Long.parseLong(str);
+                integerValue = Integer.parseInt(str);
                 type = Type.Integer;
             } else if( isDouble(str) ) {
                 doubleValue = Double.parseDouble(str);
@@ -54,7 +54,7 @@ public class DefaultItem implements Serializable, Item
             }
         }
         else if( o instanceof Integer ) {
-            integerValue = (Long)o;
+            integerValue = (Integer)o;
             type = Type.Integer;
         }
         else if( o instanceof Double ) {
@@ -131,11 +131,6 @@ public class DefaultItem implements Serializable, Item
      */
     public Integer getInteger()
     {
-        return integerValue.intValue();
-    }
-    
-    public Long getLong()
-    {
         return integerValue;
     }
 
@@ -174,13 +169,7 @@ public class DefaultItem implements Serializable, Item
      * @param integerValue the integerValue to set
      */
     public void setIntegerValue(Integer integerValue) {
-        this.integerValue = integerValue.longValue();
-    }
-    /**
-     * @param longValue the longValue to set
-     */
-    public void setLongValue(Long longValue) {
-        this.integerValue = longValue;
+        this.integerValue = integerValue;
     }
 
     /**
@@ -262,9 +251,7 @@ public class DefaultItem implements Serializable, Item
             if( type == Type.String && value instanceof String ) {
                 stringValue = (String)value;
             } else if( type == Type.Integer && value instanceof Integer ) {
-                integerValue = ((Integer)value).longValue();
-            } else if( type == Type.Integer && value instanceof Long) {
-                integerValue = (Long) value;
+                integerValue = (Integer)value;
             } else if( type == Type.Double && value instanceof Double ){
                 doubleValue = (Double)value;
             } else if( type == Type.Record && value instanceof Record ) {

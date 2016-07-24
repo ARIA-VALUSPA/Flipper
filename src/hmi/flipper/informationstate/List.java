@@ -31,7 +31,6 @@ public interface List
      */
     void addItemEnd( String value );
     void addItemEnd( Integer value );
-    void addItemEnd( Long value );
     void addItemEnd( Double value );
     void addItemEnd( Record value );
     void addItemEnd( List value );
@@ -42,7 +41,6 @@ public interface List
      */
     void addItemStart( String value );
     void addItemStart( Integer value );
-    void addItemStart( Long value );
     void addItemStart( Double value );
     void addItemStart( Record value );
     void addItemStart( List value );

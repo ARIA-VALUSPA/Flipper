@@ -153,7 +153,7 @@ public class ISTreePanel extends JPanel implements MouseListener, ActionListener
             if( type.equals(Type.String.toString()) ) {
                 item.getList().addItemEnd(value);
             } else if( type.equals(Type.Integer.toString()) ) {
-                long intValue = Long.parseLong(value);
+                int intValue = Integer.parseInt(value);
                 item.getList().addItemEnd(intValue);
             } else if( type.equals(Type.Double.toString()) ) {
                 double doubleValue = Double.parseDouble(value);
@@ -167,7 +167,7 @@ public class ISTreePanel extends JPanel implements MouseListener, ActionListener
             if( type.equals(Type.String.toString()) ) {
                 item.getRecord().set(name, value);
             } else if( type.equals(Type.Integer.toString()) ) {
-                long intValue = Long.parseLong(value);
+                int intValue = Integer.parseInt(value);
                 item.getRecord().set(name, intValue);
             }  else if( type.equals(Type.Double.toString()) ) {
                 double doubleValue = Double.parseDouble(value);
