@@ -159,7 +159,7 @@ public class AbstractValue
 
         /* Depending on the type of the value, create a new Value */
         if( isInt && !isDouble && !isString ) {
-            return new Value( Integer.parseInt(str) );
+            return new Value( Long.parseLong(str) );
         } else if( isDouble && !isInt && !isString ) {
             return new Value( Double.parseDouble(str) );
         } else if( isString && !isInt && !isDouble ) {

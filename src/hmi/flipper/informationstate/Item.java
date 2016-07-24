@@ -20,6 +20,7 @@ public interface Item
      */
     String getString();
     Integer getInteger();
+    Long getLong();
     Double getDouble();
     Record getRecord();
     List getList();
@@ -29,6 +30,7 @@ public interface Item
      */
     void setStringValue(String stringValue);
     void setIntegerValue(Integer integerValue);
+    void setLongValue(Long longValue);
     void setDoubleValue(Double doubleValue);
     void setRecordValue(Record recordValue);
     void setListValue(List listValue);
